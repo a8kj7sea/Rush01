@@ -35,8 +35,11 @@ static int	fill_constraints(char *input, int *constraints, int *count)
 			return (0);
 		if (input[i] >= '1' && input[i] <= ('0' + SIZE))
 		{
-			constraints[*count] = input[i] - '0';
-			(*count)++;
+			if (i == 0 || input[i - 1] == ' ')
+			{
+				constraints[*count] = input[i] - '0';
+				(*count)++;
+			}
 		}
 		i++;
 	}
